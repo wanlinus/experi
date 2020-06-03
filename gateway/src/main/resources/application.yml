@@ -1,0 +1,16 @@
+server:
+  port: 8000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: default_path_to_http
+          uri: lb://auth/
+          predicates:
+            - Path=/auth/** #以auth开始的url
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能
+          lower-case-service-id: true #使用小写服务名，默认是大写
+  application:
+    name: gateway
