@@ -1,5 +1,21 @@
 spring:
   application:
     name: auth
+  datasource:
+    username: root
+    password: mysqlpassword
+    sql-script-encoding: utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.11.112:3308/auth?useUnicode=true&characterEncoding=utf-8
+    hikari:
+      auto-commit: true
+      connection-init-sql: SET NAMES utf8mb4
+      pool-name: auth-hi
+  flyway:
+    locations: classpath:db/migration
+    url: jdbc:mysql://192.168.11.112:3308/mysql
+    user: root
+    password: mysqlpassword
+    schemas: auth
 server:
   port: 9000
