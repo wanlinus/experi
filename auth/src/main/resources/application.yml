@@ -19,3 +19,6 @@ spring:
     schemas: auth
 server:
   port: 9000
+
+mybatis:
+  mapper-locations: classpath:mybatis
