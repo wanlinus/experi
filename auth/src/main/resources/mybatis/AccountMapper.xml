@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wanli.auth.persistence.AccountMapper">
+    <resultMap id="BaseResultMap" type="cn.wanli.auth.domain.Account">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="TINYINT"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="BASE_SQL">
+        `id`,`name`,`nickname`,`password`,`email`,`age`,`gender`,`created_time`,`updated_time`
+    </sql>
+
+    <insert id="save" parameterType="cn.wanli.auth.domain.Account">
+        insert into tb_account (name, nickname, password, email, age, gender, created_time, updated_time)
+        values (#{name}, #{nickname}, #{password}, #{email}, #{age}, #{gender}, #{created_time}, #{updated_time})
+    </insert>
+    <update id="update" parameterType="cn.wanli.auth.domain.Account">
+        update tb_account
+        <set>
+            <if test="name != null">
+                name = #{name, jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{}
+            </if>
+        </set>
+    </update>
+</mapper>

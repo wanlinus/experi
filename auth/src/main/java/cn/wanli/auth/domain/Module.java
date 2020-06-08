@@ -8,31 +8,20 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 角色表
+ * 模块实体, 大粒度划分系统功能
  *
  * @author wanli
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role implements Serializable {
+public class Module implements Serializable {
     private Long id;
-    /**
-     * 角色名
-     */
     private String name;
     /**
-     * 角色等级, 1 超级管理员,2 普通管理员,3 普通用户
+     * 模块属于树形结构, 有父节点和子节点,只使用此字段来描述父节点
      */
-    private Integer grade;
-    /**
-     * 角色描述
-     */
-    private String desc;
-    /**
-     * 由谁创建
-     */
-    private Long createdBy;
+    private Long parentId;
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
 }

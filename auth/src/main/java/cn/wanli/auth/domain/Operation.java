@@ -8,31 +8,18 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 角色表
+ * 操作类, 用来描述系统api的实体
  *
  * @author wanli
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role implements Serializable {
+public class Operation implements Serializable {
     private Long id;
-    /**
-     * 角色名
-     */
     private String name;
-    /**
-     * 角色等级, 1 超级管理员,2 普通管理员,3 普通用户
-     */
-    private Integer grade;
-    /**
-     * 角色描述
-     */
-    private String desc;
-    /**
-     * 由谁创建
-     */
-    private Long createdBy;
+    private String url;
+    private String method;
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
 }
