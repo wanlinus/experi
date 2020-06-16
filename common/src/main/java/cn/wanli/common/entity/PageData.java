@@ -1,8 +1,6 @@
 package cn.wanli.common.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cn.wanli.common.utils.JSON;
 
 import java.io.Serializable;
 import java.util.Collections;
@@ -14,9 +12,6 @@ import java.util.List;
  * @param <T> 泛型
  * @author wanli
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class PageData<T> implements Serializable {
     /**
      * 当前页
@@ -34,4 +29,44 @@ public class PageData<T> implements Serializable {
      * 数据集合
      */
     private List<T> data = Collections.emptyList();
+
+    public PageData() {
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public List<T> getData() {
+        return data;
+    }
+
+    public void setData(List<T> data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }

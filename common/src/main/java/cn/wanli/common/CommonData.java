@@ -1,9 +1,10 @@
 package cn.wanli.common;
 
-import lombok.Data;
+import java.io.Serializable;
 
-@Data
-public class CommonData {
+public class CommonData implements Serializable {
     private String name;
     private String password;
+
+
 }
