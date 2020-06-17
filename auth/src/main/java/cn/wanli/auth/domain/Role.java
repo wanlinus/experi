@@ -1,8 +1,6 @@
 package cn.wanli.auth.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cn.wanli.common.utils.JSON;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,10 +10,8 @@ import java.time.LocalDateTime;
  *
  * @author wanli
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Role implements Serializable {
+
     private Long id;
     /**
      * 角色名
@@ -33,6 +29,72 @@ public class Role implements Serializable {
      * 由谁创建
      */
     private Long createdBy;
+
     private LocalDateTime createdTime;
+
     private LocalDateTime updatedTime;
+
+    public Role() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public LocalDateTime getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(LocalDateTime updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }

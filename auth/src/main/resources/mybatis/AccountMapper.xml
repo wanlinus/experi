@@ -34,8 +34,28 @@
                 email = #{email,jdbcType=VARCHAR},
             </if>
             <if test="age != null">
-                age = #{}
+                age = #{age,jdbcType=TINYINT},
             </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            updated_time = now()
         </set>
+        where id=#{id}
     </update>
+    <delete id="deleteById">
+        delete
+        from tb_account
+        where id = ${id}
+    </delete>
+    <select id="findById" resultType="cn.wanli.auth.domain.Account">
+        select
+        <include refid="BASE_SQL"/>
+        from tb_account where id=#{id}
+    </select>
+    <select id="findByName" resultType="cn.wanli.auth.domain.Account">
+        select
+        <include refid="BASE_SQL"/>
+        from tb_account where name=#{name}
+    </select>
 </mapper>

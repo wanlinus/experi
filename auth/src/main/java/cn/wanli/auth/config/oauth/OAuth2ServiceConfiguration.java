@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -23,13 +22,13 @@ public class OAuth2ServiceConfiguration extends AuthorizationServerConfigurerAda
     /**
      * 密码模式需要注入认证管理器
      */
-    @Autowired
-    private AuthenticationManager authenticationManager;
+//    @Resource
+//    private AuthenticationManager authenticationManager;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
+//    @Resource
+//    private AuthenticationManager authenticationManager;
 
 
 }

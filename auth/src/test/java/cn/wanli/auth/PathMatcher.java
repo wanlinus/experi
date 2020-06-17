@@ -1,6 +1,6 @@
 package cn.wanli.auth;
 
-import com.alibaba.fastjson.JSON;
+import cn.wanli.common.utils.JSON;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.AntPathMatcher;
 
