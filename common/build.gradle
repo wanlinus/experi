@@ -3,8 +3,12 @@ plugins {
 }
 
 dependencies {
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.0'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.0'
 }
-bootJar {
-    enabled = false
-}
+
+bootJar.enabled = false
+//程序包不存在 解决多个module依赖
+jar.enabled = true

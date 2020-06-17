@@ -10,28 +10,28 @@ import java.io.Serializable;
  * @param <T>
  * @author wanli
  */
-public class ServerResp<T> implements Serializable {
-    private String errorCode;
-    private String errorMsg;
+public class ServerResp<T extends Serializable> implements Serializable {
+    private String respCode;
+    private String respMsg;
     private T data;
 
     public ServerResp() {
     }
 
-    public String getErrorCode() {
-        return errorCode;
+    public String getRespCode() {
+        return respCode;
     }
 
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
+    public void setRespCode(String respCode) {
+        this.respCode = respCode;
     }
 
-    public String getErrorMsg() {
-        return errorMsg;
+    public String getRespMsg() {
+        return respMsg;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setRespMsg(String respMsg) {
+        this.respMsg = respMsg;
     }
 
     public T getData() {

@@ -1,8 +1,6 @@
 package cn.wanli.auth.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cn.wanli.common.utils.JSON;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,9 +10,6 @@ import java.time.LocalDateTime;
  *
  * @author wanli
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Module implements Serializable {
     private Long id;
     private String name;
@@ -24,4 +19,52 @@ public class Module implements Serializable {
     private Long parentId;
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
+
+    public Module() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public LocalDateTime getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(LocalDateTime updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }
