@@ -1,3 +1,4 @@
+host: 192.168.13.70
 spring:
   application:
     name: auth
@@ -6,14 +7,14 @@ spring:
     password: mysqlpassword
     sql-script-encoding: utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.1.20:3306/auth?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://${host}:33060/auth?useUnicode=true&characterEncoding=utf-8
     hikari:
       auto-commit: true
       connection-init-sql: SET NAMES utf8mb4
       pool-name: auth-hi
   redis:
     database: 0 #redis索引
-    host: 172.16.1.20
+    host: ${host}
     port: 6379
     lettuce:
       pool:
@@ -24,7 +25,7 @@ spring:
     timeout: 2000
   flyway:
     locations: classpath:db/migration
-    url: jdbc:mysql://172.16.1.20:3306/mysql
+    url: jdbc:mysql://${host}:33060/mysql
     user: root
     password: mysqlpassword
     schemas: auth
@@ -33,3 +34,8 @@ server:
 
 mybatis:
   mapper-locations: classpath:mybatis/*.xml
+
+management:
+  endpoint:
+    health:
+      enabled: true

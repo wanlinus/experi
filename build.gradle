@@ -1,6 +1,6 @@
 plugins {
-    id 'org.springframework.boot' version '2.3.1.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.3.12.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
@@ -14,7 +14,7 @@ subprojects {
 
     group = 'cn.wanli'
     version = '1.0.0.RELEASE'
-    sourceCompatibility = '8'
+    sourceCompatibility = '11'
 
     repositories {
         maven {
@@ -48,7 +48,7 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR5"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR12"
         }
     }
 }
