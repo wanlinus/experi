@@ -1,4 +1,4 @@
-package cn.wanli.auth.config.oauth;
+package cn.wanli.auth.config;
 
 import cn.wanli.common.entity.ServerResp;
 import cn.wanli.common.entity.ServerRespCode;

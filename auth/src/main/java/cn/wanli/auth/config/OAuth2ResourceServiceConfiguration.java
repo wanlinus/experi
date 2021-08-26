@@ -1,0 +1,31 @@
+package cn.wanli.auth.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+
+/**
+ * 资源服务器配置
+ *
+ * @author wanli
+ */
+@Configuration
+@EnableResourceServer
+public class OAuth2ResourceServiceConfiguration extends ResourceServerConfigurerAdapter {
+
+    /**
+     * 感觉这里可以不用配置
+     */
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/oauth/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .requestMatchers()
+//                //配置需要保护的资源路径
+//                .antMatchers("/user/**");
+        super.configure(http);
+    }
+}

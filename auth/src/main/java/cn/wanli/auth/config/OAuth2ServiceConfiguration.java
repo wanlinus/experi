@@ -1,4 +1,4 @@
-package cn.wanli.auth.config.oauth;
+package cn.wanli.auth.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -20,7 +19,7 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 import javax.annotation.Resource;
 
 /**
- * 开启OAuth2服务
+ * 开启OAuth2认证服务
  * EnableAuthorizationServer 注解为微服务运行环境提供一个基于 OAuth2 协议的授权服务
  * 会暴露一系列的端点 /oauth/authorize,/oauth/token
  *
@@ -38,18 +37,16 @@ public class OAuth2ServiceConfiguration extends AuthorizationServerConfigurerAda
     @Resource
     private AuthenticationManager authenticationManager;
     @Resource
-    private PasswordEncoder passwordEncoder;
-    @Resource
     private UserDetailsService userDetailsService;
     @Resource
     private RedisConnectionFactory redisConnectionFactory;
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     @Bean
     public TokenStore tokenStore() {
         return new RedisTokenStore(redisConnectionFactory);
     }
-
-    private final String realm = "oauth2/client";
 
     /**
      * 配置AuthorizationServerEndpointsConfigurer众多相关类，
@@ -75,7 +72,11 @@ public class OAuth2ServiceConfiguration extends AuthorizationServerConfigurerAda
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        super.configure(security);
+        // 请求token的接口谁都可以访问
+        security.tokenKeyAccess("permitAll()")
+                // 检查token的接口谁都可以访问
+                .checkTokenAccess("authenticated()")
+                .allowFormAuthenticationForClients();
     }
 
     /**
@@ -88,16 +89,18 @@ public class OAuth2ServiceConfiguration extends AuthorizationServerConfigurerAda
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("client")
-                .secret("{bcrypt}ifauth_secret")
+                .withClient("webclient")
+                .secret(passwordEncoder.encode("secret"))
+                // token访问有效期
+                .accessTokenValiditySeconds(3600)
+                // 刷新token有效期
+                .refreshTokenValiditySeconds(3600)
+                // 授权类型
                 .authorizedGrantTypes("password", "refresh_token")
-                .scopes("all");
+                // 配置申请的权限范围
+                .scopes("all", "read", "write");
 
 
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

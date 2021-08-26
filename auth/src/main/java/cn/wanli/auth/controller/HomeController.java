@@ -10,7 +10,7 @@ public class HomeController {
 
     @GetMapping
     public String home() {
-        return "welcome to experi project";
+        return "welcome to experi project, this is auth app";
     }
 
     @GetMapping("/home")
