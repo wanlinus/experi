@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class PageRequest implements Serializable {
 
     @Min(value = 1, message = "请求页不能小于1")
-    private Integer page;
+    private Integer page = 1;
 
     @Size(min = 1, max = 100, message = "分页请求数量必须在1~100之间")
     private Integer size = 10;

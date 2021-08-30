@@ -2,7 +2,9 @@ package cn.wanli.auth.persistence;
 
 import cn.wanli.auth.domain.Account;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -49,4 +51,6 @@ public interface AccountMapper {
      * @return
      */
     Optional<Account> findByName(String name);
+
+    List<Account> list(@Param("offset") int offset, @Param("size") Integer size, @Param("keyword") String keyword);
 }

@@ -26,7 +26,7 @@ public final class JSON {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(JSON.class);
-    private static final ObjectMapper MAPPER;
+    public static final ObjectMapper MAPPER;
 
     static {
         MAPPER = new ObjectMapper();

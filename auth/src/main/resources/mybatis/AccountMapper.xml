@@ -14,7 +14,8 @@
     </resultMap>
 
     <sql id="BASE_SQL">
-        `id`,`name`,`nickname`,`password`,`email`,`age`,`gender`,`created_time`,`updated_time`
+        `id`
+        ,`name`,`nickname`,`password`,`email`,`age`,`gender`,`created_time`,`updated_time`
     </sql>
 
     <insert id="save" parameterType="cn.wanli.auth.domain.Account">
@@ -57,5 +58,16 @@
         select
         <include refid="BASE_SQL"/>
         from tb_account where name=#{name}
+    </select>
+    <select id="list" resultType="cn.wanli.auth.domain.Account">
+        select
+        <include refid="BASE_SQL"/>
+        from tb_account a
+        <where>
+            <if test="keyword != null and keyword.trim().length() > 0">
+                a.name like CONCAT('%', #{keyword}, '%')
+            </if>
+        </where>
+        limit #{offset}, #{size}
     </select>
 </mapper>

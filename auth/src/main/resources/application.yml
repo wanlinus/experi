@@ -7,7 +7,7 @@ spring:
     password: mysqlpassword
     sql-script-encoding: utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${host}:3306/auth?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://${host}:3307/auth?useUnicode=true&characterEncoding=utf-8
     hikari:
       auto-commit: true
       connection-init-sql: SET NAMES utf8mb4
@@ -15,7 +15,7 @@ spring:
   redis:
     database: 0 #redis索引
     host: ${host}
-    port: 6379
+    port: 6380
     lettuce:
       pool:
         max-active: 8 # 连接池最大数量
@@ -25,7 +25,7 @@ spring:
     timeout: 2000
   flyway:
     locations: classpath:db/migration
-    url: jdbc:mysql://${host}:3306/mysql
+    url: jdbc:mysql://${host}:3307/mysql
     user: root
     password: mysqlpassword
     schemas: auth

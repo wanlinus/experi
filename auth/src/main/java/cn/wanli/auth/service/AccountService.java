@@ -1,7 +1,9 @@
 package cn.wanli.auth.service;
 
 import cn.wanli.auth.domain.Account;
+import cn.wanli.common.entity.PageRequest;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,4 +30,5 @@ public interface AccountService {
      */
     Optional<Account> findByName(String name);
 
+    List<Account> list(PageRequest req);
 }

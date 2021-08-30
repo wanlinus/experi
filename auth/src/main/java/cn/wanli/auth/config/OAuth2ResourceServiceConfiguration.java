@@ -19,13 +19,11 @@ public class OAuth2ResourceServiceConfiguration extends ResourceServerConfigurer
      */
     @Override
     public void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/oauth/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .requestMatchers()
-//                //配置需要保护的资源路径
-//                .antMatchers("/user/**");
-        super.configure(http);
+        http.authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .requestMatchers()
+                //配置需要保护的资源路径
+                .antMatchers("/account/**");
     }
 }

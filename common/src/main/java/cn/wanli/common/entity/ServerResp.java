@@ -2,15 +2,13 @@ package cn.wanli.common.entity;
 
 import cn.wanli.common.utils.JSON;
 
-import java.io.Serializable;
-
 /**
  * 服务返回数据对象
  *
  * @param <T>
  * @author wanli
  */
-public class ServerResp<T extends Serializable> implements Serializable {
+public class ServerResp<T> {
     private String respCode;
     private String respMsg;
     private T data;

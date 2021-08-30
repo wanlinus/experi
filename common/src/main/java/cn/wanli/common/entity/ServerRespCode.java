@@ -12,10 +12,9 @@ public enum ServerRespCode {
     /**
      * 服务器响应码具体
      */
+    SUCCESS("1000000", "请求成功"),
     ACCESS_DENIED("4000001", "禁止访问"),
-    USER_NOT_FOUND("5000001", "用户或密码错误")
-
-    ;
+    USER_NOT_FOUND("5000001", "用户或密码错误");
 
     private final String value;
     private final String desc;
