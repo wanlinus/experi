@@ -14,8 +14,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.web.cors.CorsConfiguration;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 开启OAuth2认证服务
@@ -44,6 +48,7 @@ public class OAuth2ServiceConfiguration extends AuthorizationServerConfigurerAda
 
     @Bean
     public TokenStore tokenStore() {
+//        return new RedisTokenStore(redisConnectionFactory);
         return new RedisTokenStore(redisConnectionFactory);
     }
 
@@ -60,6 +65,17 @@ public class OAuth2ServiceConfiguration extends AuthorizationServerConfigurerAda
                 .tokenStore(this.tokenStore())
                 .authenticationManager(this.authenticationManager)
                 .userDetailsService(userDetailsService);
+
+        // 解决oauth/token cors问题
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.setMaxAge(3600L);
+        Map<String, CorsConfiguration> corsConfigurationMap = new HashMap<>(8);
+        corsConfigurationMap.put("/oauth/token", corsConfiguration);
+        endpoints.getFrameworkEndpointHandlerMapping().setCorsConfigurations(corsConfigurationMap);
     }
 
     /**

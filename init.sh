@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run -d --restart=always -p 3307:3306 --name wanli-mysql -e MYSQL_ROOT_PASSWORD=mysqlpassword mysql:8
+docker run -d --restart=always -p 3307:3306 --name wanli-mysql -e MYSQL_ROOT_PASSWORD=mysqlpassword mysql
 docker run -d --restart=always -p 6380:6379 --name wanli-redis redis
 
 

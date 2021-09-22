@@ -16,6 +16,17 @@ public class ServerResp<T> {
     public ServerResp() {
     }
 
+    public ServerResp(T data) {
+        this.data = data;
+    }
+
+    public ServerResp(T data, String respCode, String respMsg) {
+        this.data = data;
+        this.respCode = respCode;
+        this.respMsg = respMsg;
+
+    }
+
     public String getRespCode() {
         return respCode;
     }

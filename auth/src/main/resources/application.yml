@@ -1,4 +1,4 @@
-host: 172.16.1.100
+host: 192.168.11.112
 spring:
   application:
     name: auth
