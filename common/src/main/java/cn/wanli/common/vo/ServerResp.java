@@ -1,4 +1,4 @@
-package cn.wanli.common.entity;
+package cn.wanli.common.vo;
 
 import cn.wanli.common.utils.JSON;
 

@@ -3,7 +3,7 @@ package cn.wanli.auth.service.impl;
 import cn.wanli.auth.domain.Account;
 import cn.wanli.auth.persistence.AccountMapper;
 import cn.wanli.auth.service.AccountService;
-import cn.wanli.common.entity.PageRequest;
+import cn.wanli.common.vo.PageReq;
 import cn.wanli.common.utils.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +37,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<Account> list(PageRequest req) {
+    public List<Account> list(PageReq req) {
         int offset = (req.getPage() - 1) * req.getSize();
         return accountMapper.list(offset, req.getSize(), req.getKeyword());
     }

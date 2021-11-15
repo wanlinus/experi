@@ -1,17 +1,13 @@
-package cn.wanli.auth.domain;
+package cn.wanli.common.entity;
 
 import cn.wanli.common.enums.Gender;
-import cn.wanli.common.utils.JSON;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 对应tb_account表, 用于记录账户信息的实体
- *
  * @author wanli
  */
-public class Account implements Serializable {
+public class AccountInfo {
     private Long id;
     /**
      * 用户名
@@ -39,9 +35,6 @@ public class Account implements Serializable {
     private Gender gender;
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
-
-    public Account() {
-    }
 
     public Long getId() {
         return id;
@@ -113,10 +106,5 @@ public class Account implements Serializable {
 
     public void setUpdatedTime(LocalDateTime updatedTime) {
         this.updatedTime = updatedTime;
-    }
-
-    @Override
-    public String toString() {
-        return JSON.toJSONString(this);
     }
 }

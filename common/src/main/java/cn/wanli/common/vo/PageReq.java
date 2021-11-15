@@ -1,4 +1,4 @@
-package cn.wanli.common.entity;
+package cn.wanli.common.vo;
 
 import cn.wanli.common.utils.JSON;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author wanli
  */
-public class PageRequest implements Serializable {
+public class PageReq implements Serializable {
 
     @Min(value = 1, message = "请求页不能小于1")
     private Integer page = 1;
@@ -22,7 +22,7 @@ public class PageRequest implements Serializable {
     @Size(max = 10, message = "查询字符串的最大长度为20")
     private String keyword = "";
 
-    public PageRequest() {
+    public PageReq() {
     }
 
     public Integer getPage() {

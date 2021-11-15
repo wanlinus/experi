@@ -1,8 +1,8 @@
 package cn.wanli.common.utils;
 
-import cn.wanli.common.entity.ServerResp;
+import cn.wanli.common.vo.ServerResp;
 
-import static cn.wanli.common.entity.ServerRespCode.SUCCESS;
+import static cn.wanli.common.vo.ServerRespCode.SUCCESS;
 
 /**
  * @author wanli

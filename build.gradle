@@ -14,7 +14,7 @@ subprojects {
 
     group = 'cn.wanli'
     version = '1.0.0.RELEASE'
-    sourceCompatibility = '1.8'
+    sourceCompatibility = '11'
 
     repositories {
         maven {

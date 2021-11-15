@@ -1,4 +1,4 @@
-package cn.wanli.auth.enums;
+package cn.wanli.common.enums;
 
 /**
  * 性别枚举

@@ -1,7 +1,7 @@
 package cn.wanli.auth.config;
 
-import cn.wanli.common.entity.ServerResp;
-import cn.wanli.common.entity.ServerRespCode;
+import cn.wanli.common.vo.ServerResp;
+import cn.wanli.common.vo.ServerRespCode;
 import cn.wanli.common.utils.JSON;
 import org.apache.http.entity.ContentType;
 import org.springframework.security.access.AccessDeniedException;
